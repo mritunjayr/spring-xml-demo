@@ -1,60 +1,37 @@
-//Task 1: Create a Maven project and add required dependency of spring-context5.1.4.RELEASECreate a Main class in package
-// com.stackroute and two Spring Beans –  Movie, and Actor in package com.stackroute.domain. Actor has two String properties,
-// name and gender, and an age property of type int. An Actor can be initialized with the three properties via the corresponding
-// setter methods. Use property based injection in the bean definition file (beans.xml) Movie “has a” Actor that can be initialized
-// via the corresponding setter method. Use property based object injection in the bean definition file (beans.xml) The Main class looks
-// up Movie bean via three ways to print out actor information: 1.Using XmlBeanFactory2.Using Spring 3.2 BeanDefinitionRegistry and
-// BeanDefinitionReader3.Using ApplicationContextCreate a spring-xml-demo repo and push the code to master branch.
-
+//Task 2: From the master branch of spring-xml-demo repo create a constructor-injectionbranch.
+//        Add constructor to the Actor class to
+//        initialize with name and gender, and ageCreate three beans of type Acto
+//                r in the bean definition file.  Use constructor-based injection in the bean defi
+//        nition file (beans.xml) to inject property values in each of the three beans via name, index,
+//        and type respectively. For the Movie bean, use constructor based object injection in the bean
+//        definition file (beans.xml) to inject an Actor bean. In the Main class, look up Movie bean
+//        using ApplicationContext and print out Author information. Use the same ApplicationContext to
+//        again look up the same Movie bean. Print out the equality result of the two Movie beans.
+//        System.out.println(beanA==beanB); Change the scope of the Movie bean in beans.xml to prototyp
+//        e and run the application again. Note the output. Replace id of the Movie bean with name having
+//        two values, like this:
+//<bean name=”MovieA, MovieB” ........>
+// Update the code in Main to get the Movie bean by its two diffe
+//        rent name. Push the code to constructor-injection branch.
 package com.stackroute;
 
 import com.stackroute.domain.Movie;
-import org.springframework.beans.MutablePropertyValues;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
-import org.springframework.beans.factory.support.BeanDefinitionReader;
-import org.springframework.beans.factory.support.BeanDefinitionRegistry;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.beans.factory.support.GenericBeanDefinition;
-import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 
 public class Main {
     public static void main(String[] args) {
-        // using XmlBeanFactory
-        Resource resource=new FileSystemResource("src/main/resources/beans.xml");
-        BeanFactory factory=new XmlBeanFactory(resource);
-        Movie movie=(Movie)factory.getBean("movie");
-        System.out.println(movie);
 
         // using ApplicationContext
-        ApplicationContext context= new ClassPathXmlApplicationContext("beans.xml");
-        Movie movie2=(Movie)factory.getBean("movie");
-        System.out.println(movie2);
-
-        //using BeanDefinitionRegistry and BeanDefinitionReader
-
-        BeanDefinitionRegistry beanDefinitionRegistry=(BeanDefinitionRegistry) context.getAutowireCapableBeanFactory();
-
-        GenericBeanDefinition definition=new GenericBeanDefinition();
-        definition.setBeanClass(Movie.class);
-        definition.setAutowireCandidate(true);
-        MutablePropertyValues mutablePropertyValues=new MutablePropertyValues();
-        beanDefinitionRegistry.registerBeanDefinition("movie2",definition);
-
-
-        Movie movie1=(Movie)context.getBean("movie2");
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+        Movie movie1 = (Movie) context.getBean("MovieA", Movie.class);
         System.out.println(movie1);
 
+        Movie movie2 = (Movie) context.getBean("MovieB");
+        System.out.println(movie2);
 
-        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-        BeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
-        reader.loadBeanDefinitions(new FileSystemResource("src/main/resources/beans.xml"));
-        Movie movie3=(Movie)factory.getBean("movie");
-        System.out.println(movie3);
+        System.out.println(movie1 == movie2);
+
     }
 }

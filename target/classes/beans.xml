@@ -5,14 +5,24 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-    <bean id="actor" class="com.stackroute.domain.Actor">
-        <property name="actorName" value="mritunjay"></property>
-        <property name="gender" value="male"></property>
-        <property name="age" value="22"></property>
+    <bean id="actor1" class="com.stackroute.domain.Actor">
+        <constructor-arg value="Arjun" index="0" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="Male" index="1" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="30" index="2"></constructor-arg>
+    </bean>
+    <bean id="actor2" class="com.stackroute.domain.Actor">
+        <constructor-arg value="Rani" index="0" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="Female" index="1" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="32" index="2" ></constructor-arg>
+    </bean>
+    <bean id="actor3" class="com.stackroute.domain.Actor">
+        <constructor-arg value="Shakti" index="0" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="Male" index="1" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="35" index="2"></constructor-arg>
     </bean>
 
-    <bean id="movie" class="com.stackroute.domain.Movie" autowire="byName">
-
+    <bean name="MovieA, MovieB" class="com.stackroute.domain.Movie" scope="prototype">
+        <constructor-arg ref="actor1" ></constructor-arg>
     </bean>
 
 </beans>

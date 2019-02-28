@@ -5,6 +5,12 @@ public class Actor {
     private String gender;
     private int age;
 
+    public Actor(String actorName, String gender, int age) {
+        this.actorName = actorName;
+        this.gender = gender;
+        this.age = age;
+    }
+
     public void setActorName(String actorName) {
         this.actorName = actorName;
     }
