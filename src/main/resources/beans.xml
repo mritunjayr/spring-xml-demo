@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-    <bean id="actor1" class="com.stackroute.domain.Actor">
+    <bean id="actor" class="com.stackroute.domain.Actor">
         <constructor-arg value="Arjun" index="0" type="java.lang.String"></constructor-arg>
         <constructor-arg value="Male" index="1" type="java.lang.String"></constructor-arg>
         <constructor-arg value="30" index="2"></constructor-arg>
@@ -21,8 +21,11 @@
         <constructor-arg value="35" index="2"></constructor-arg>
     </bean>
 
-    <bean name="MovieA, MovieB" class="com.stackroute.domain.Movie" scope="prototype">
-        <constructor-arg ref="actor1"></constructor-arg>
+    <bean id="MovieA" class="com.stackroute.domain.Movie" scope="prototype" autowire="byName">
+
+    </bean>
+    <bean id="MovieB" class="com.stackroute.domain.Movie" scope="prototype" autowire="constructor">
+
     </bean>
 
 </beans>
