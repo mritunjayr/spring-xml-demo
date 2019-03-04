@@ -1,9 +1,16 @@
-**Task 4:** 
+**Task 5:** 
 
-From the autowire-xml branch of `spring-xml-demo` 
-repo create an aware-interfacebranch.
+From the `aware-interface` branch of `spring-xml-demo` repo create a `bean-lifecyclebranch`.
  
- Implement ApplicationContextAware, BeanFactoryAware, BeanNameAware in theMovie class and print out their results. 
+ Add a BeanLifecycleDemoBean class in com.stackroute.demo that implements InitializingBean and DisposableBean. 
  
- Push the code to `aware-interface` branch.  
- the code to `autowire-xml` branch.
+ Override the required methods to print out messages. Define BeanLifecycleDemoBean as a bean in beans.xml. 
+ 
+ Run the application and observe the result.
+ 
+  
+Add two methods customInit() and customDestroy() to the  BeanLifecycleDemoBeanclass and print out custom messages.
+ 
+ In the BeanLifecycleDemoBean bean definition, in beans.xml, set the customInit()and customDestroy() methods to be called.
+ 
+ Run the application. Push the code to bean-lifecycle bran
