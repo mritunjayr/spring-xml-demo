@@ -1,16 +1,11 @@
-**Task 5:** 
+###### **Task 6:** 
 
-From the `aware-interface` branch of `spring-xml-demo` repo create a `bean-lifecyclebranch`.
+From the bean-lifecycle branch of spring-xml-demo repo create a bean-post-processor branch. 
+
+Add a BeanPostProcessorDemoBean class in com.stackroute.demo that implements BeanPostProcessorOverride the required methods to print out messages. 
+
+Define BeanLifecycleDemoBean as a bean in beans.xml.
  
- Add a BeanLifecycleDemoBean class in com.stackroute.demo that implements InitializingBean and DisposableBean. 
+ Run the application and observe the result. 
  
- Override the required methods to print out messages. Define BeanLifecycleDemoBean as a bean in beans.xml. 
- 
- Run the application and observe the result.
- 
-  
-Add two methods customInit() and customDestroy() to the  BeanLifecycleDemoBeanclass and print out custom messages.
- 
- In the BeanLifecycleDemoBean bean definition, in beans.xml, set the customInit()and customDestroy() methods to be called.
- 
- Run the application. Push the code to bean-lifecycle bran
+ Push the code to bean-post-processor branch.
