@@ -28,10 +28,6 @@ public class Main {
         Movie movie1 = (Movie) context.getBean("MovieA", Movie.class);
         System.out.println(movie1);
 
-        Movie movie2 = (Movie) context.getBean("MovieB");
-        System.out.println(movie2);
-
-        System.out.println(movie1 == movie2);
 
     }
 }
